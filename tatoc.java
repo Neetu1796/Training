@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class tatoc {
 public static void main(String aa[]) {
@@ -29,7 +30,11 @@ while(true) {
 	break;
 	}
 }
-
+//third task
+	WebElement dragbox=driver.findElement(By.className("ui-draggable"));
+	Actions action=new Actions(driver);
+	action.dragAndDropBy(dragbox, 20,-73).build().perform();
+	driver.findElement(By.linkText("Proceed")).click();
 
         }
 }
