@@ -12,15 +12,15 @@ import tatoctesting.Timesheet;
 
 public class hrisTest {
 WebDriver driver;
-Hris hris;
-Timesheet timesheet;
 
+Timesheet timesheet;
+//Hris hris=new Hris(driver);
 public hrisTest() {
 
 	System.setProperty("webdriver.chrome.driver","D:\\chromedriver_win32\\chromedriver.exe");
 	this.driver=new ChromeDriver();
 	driver.get("https://hris.qainfotech.com/login.php");
-	Hris hris=new Hris(driver);
+	
 }
 @BeforeTest
 public void set_connection() {
@@ -29,21 +29,26 @@ public void set_connection() {
 	System.out.println("connection set");
 	
 }
-@Test
-public void login_with_incorrect_password() {
-	
 
+@Test
+public void login_with_incorrect_password()throws NullPointerException  {
+	
+	Hris hris=new Hris(driver);
 	Assert.assertEquals(hris.LoginByInvalidCredentials("neetu", "password"),"Invalid Login");
 	
 }
+
 @Test
-public void login_with_correct_password() {
+public void login_with_correct_password() throws NullPointerException {
+	Hris hris=new Hris(driver);
 	timesheet=hris.LoginByCorrectCredentials("neetu1","NeetuVip@30");
     Assert.assertFalse(timesheet.isloginpage());
+    
 }
 @Test
 public void LoginWithBlankPassword()
 { String str="border: 1px solid red;";
+Hris hris=new Hris(driver);
     Assert.assertEquals(hris.LoginByBlankPassword("neetu1",""),str);
 }
 }
